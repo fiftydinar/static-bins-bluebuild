@@ -46,18 +46,16 @@ jobs:
         with:
           pattern: Wrappe-*
           merge-multiple: true
-      - name: Read version and get date
+      - name: Get date
         shell: sh
         run: |
-          echo "APPNAME=$(awk -F'=' '/^APPNAME=/ {print $2}' ./make-wrappe.sh)" >> "${GITHUB_ENV}"
-          echo "VERSION=$(pacman -Q $APPNAME | awk '{print $2; exit}')" >> "${GITHUB_ENV}"
           echo "DATE=$(date +'%Y-%m-%d_%s')" >> "${GITHUB_ENV}"
 
       - name: Release Artifacts
         uses: softprops/action-gh-release@5be0e66d93ac7ed76da52eca8bb058f665c3a5fe # v2.4.2
         with:
-          name: "${{ env.APPNAME }}: ${{ env.VERSION }}"
-          tag_name: "${{ env.VERSION }}@${{ env.DATE }}"
+          name: "BlueBuild quasi-static bins"
+          tag_name: "${{ env.DATE }}"
           prerelease: false
           draft: false
           generate_release_notes: false
