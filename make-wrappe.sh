@@ -20,6 +20,16 @@ for appname in $APPNAME; do
   mv -v ./dist/$appname ./dist/$appname-$VERSION-$ARCH-wrappe
 done
 
+APPNAME="
+	find
+"
+
+for appname in $APPNAME; do
+  VERSION=$(pacman -Q findutils | awk '{print $2; exit}')
+  /tmp/sharun-aio lib4bin --with-wrappe --dst-dir ./dist /usr/bin/$appname
+  mv -v ./dist/$appname ./dist/$appname-$VERSION-$ARCH-wrappe
+done
+
 ###################################### coreutils ######################################
 
 APPNAME="

@@ -6,7 +6,7 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm wget curl coreutils sed gawk
+pacman -Syu --noconfirm wget curl coreutils sed gawk findutils
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
