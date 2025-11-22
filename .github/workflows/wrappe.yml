@@ -49,8 +49,8 @@ jobs:
       - name: Read version and get date
         shell: sh
         run: |
-          echo "APPNAME=$APPNAME" >> "${GITHUB_ENV}"
-          echo "VERSION=$VERSION" >> "${GITHUB_ENV}"
+          echo "APPNAME=$(awk -F'=' '/^APPNAME=/ {print $2}' ./make-wrappe.sh)" >> "${GITHUB_ENV}"
+          echo "VERSION=$(pacman -Q $APPNAME | awk '{print $2; exit}')" >> "${GITHUB_ENV}"
           echo "DATE=$(date +'%Y-%m-%d_%s')" >> "${GITHUB_ENV}"
 
       - name: Release Artifacts

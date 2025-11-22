@@ -4,7 +4,7 @@ set -eu
 
 ARCH=$(uname -m)
 APPNAME=wget
-VERSION=$(pacman -Q wget | awk '{print $2; exit}')
+VERSION=$(pacman -Q $APPNAME | awk '{print $2; exit}')
 
 SHARUN_LINK=${SHARUN_LINK:-https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$ARCH-aio}
 wget -qO /tmp/sharun-aio "$SHARUN_LINK"
