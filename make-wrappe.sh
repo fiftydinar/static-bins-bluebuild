@@ -37,5 +37,5 @@ APPNAME="
 VERSION=$(pacman -Q coreutils | awk '{print $2; exit}')
 for appname in $APPNAME; do
   /tmp/sharun-aio lib4bin --with-wrappe --dst-dir ./dist /usr/bin/"$appname"
-  mv -v ./dist/"$appname" ./dist/"$appname"-"$VERSION"-wrappe
+  mv -v ./dist/"$appname" ./dist/"$appname"-coreutils-"$VERSION"-wrappe
 done
