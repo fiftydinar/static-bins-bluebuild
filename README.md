@@ -1,6 +1,7 @@
-# Pseudo-static binaries for BlueBuild project
+# Pseudo-static binaries for the BlueBuild project
 
-I made this, because we need utilities that would be portable and work everywhere accross any Linux distribution, like some `coreutils`, `sed`, `awk`, `curl` and `wget` tools.
+I made this, because we need utilities that would be portable and work everywhere accross any Linux distribution, like some `coreutils`, `sed`, `awk`, `curl` and `wget` tools.  
+So everyone can benefit from this too.
 
 Building statically linked packages is not so easy, so I resorted to the unique method of building pseudo-static binaries.
 
