@@ -15,11 +15,11 @@ jobs:
       matrix:
         include:
           - runs-on: ubuntu-latest
-            name: Build AppImage
+            name: Build Wrappe Binary
             arch: x86_64
           # comment out these 3 lines if aarch64 is not wanted
           - runs-on: ubuntu-24.04-arm
-            name: Build AppImage
+            name: Build Wrappe Binary
             arch: aarch64
     container: ghcr.io/pkgforge-dev/archlinux:latest
     steps:
