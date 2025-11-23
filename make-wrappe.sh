@@ -3,6 +3,9 @@
 set -eu
 
 ARCH=$(uname -m)
+SHARUN_LINK=${SHARUN_LINK:-https://github.com/VHSgunzo/sharun/releases/latest/download/sharun-$ARCH-aio}
+wget -qO /tmp/sharun-aio "$SHARUN_LINK"
+chmod +x /tmp/sharun-aio
 
 APPNAME="
 	wget
@@ -13,8 +16,8 @@ APPNAME="
 
 for appname in $APPNAME; do
   VERSION=$(pacman -Q $appname | awk '{print $2; exit}')
-  quick-sharun --make-static-bin --dst-dir ./dist /usr/bin/"$appname"
-  mv -v ./dist/"$appname" ./dist/"$appname-$VERSION-$ARCH-wrappe"
+  /tmp/sharun-aio lib4bin --with-wrappe --dst-dir ./dist /usr/bin/$appname
+  mv -v ./dist/$appname ./dist/$appname-$VERSION-$ARCH-wrappe
 done
 
 APPNAME="
@@ -23,8 +26,8 @@ APPNAME="
 
 for appname in $APPNAME; do
   VERSION=$(pacman -Q findutils | awk '{print $2; exit}')
-  quick-sharun --make-static-bin --dst-dir ./dist /usr/bin/"$appname"
-  mv -v ./dist/"$appname" ./dist/"$appname-$VERSION-$ARCH-wrappe"
+  /tmp/sharun-aio lib4bin --with-wrappe --dst-dir ./dist /usr/bin/$appname
+  mv -v ./dist/$appname ./dist/$appname-$VERSION-$ARCH-wrappe
 done
 
 ###################################### coreutils ######################################
@@ -43,6 +46,6 @@ APPNAME="
 
 VERSION=$(pacman -Q coreutils | awk '{print $2; exit}')
 for appname in $APPNAME; do
-  quick-sharun --make-static-bin --dst-dir ./dist /usr/bin/"$appname"
-  mv -v ./dist/"$appname" ./dist/"$appname-coreutils-$VERSION-$ARCH-wrappe"
+  /tmp/sharun-aio lib4bin --with-wrappe --dst-dir ./dist /usr/bin/"$appname"
+  mv -v ./dist/"$appname" ./dist/"$appname"-coreutils-"$VERSION"-$ARCH-wrappe
 done
