@@ -20,6 +20,7 @@ quick-sharun /usr/bin/podman \
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage
+rm ./dist/*.zsync
 
 # Make rpm and deb
 
