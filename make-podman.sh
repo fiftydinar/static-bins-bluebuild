@@ -80,36 +80,36 @@ cp -r "$univ"/* "$deb"
 dpkg-deb --root-owner-group --build "$deb" "./dist/$NAME_OF_FILE.deb"
 
 # Make rpm
-cat << EOF > "$rpm/rpm.spec"
-Name: podman-anylinux
-Summary: Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.
-Version: ${VERSION%-*}
-Release: 1%{?dist}
-URL: https://podman.io/
-License: Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MIT AND MPL-2.0
-BuildArch: $ARCH
+#cat << EOF > "$rpm/rpm.spec"
+#Name: podman-anylinux
+#Summary: Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.
+#Version: ${VERSION%-*}
+#Release: 1%{?dist}
+#URL: https://podman.io/
+#License: Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MIT AND MPL-2.0
+#BuildArch: $ARCH
 
-%description
-Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.
+#%description
+#Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.
 
-%install
-cp --parents -r %{_sourcedir}/* %buildroot
+#%install
+#cp --parents -r %{_sourcedir}/* %buildroot
 
-%files
-%{_bindir}/podman*
-%{_bindir}/podman-remote
-%{_bindir}/quadlet
-%{_bindir}/rootlessport
-%{_libexecdir}/podman/*
-%{_unitdir}/podman*
-%{_userunitdir}/podman*
-%{_tmpfilesdir}/podman*
-/usr/lib/systemd/user-generators/podman*
-%{_datadir}/fish/vendor_completions.d/podman*
-%{_datadir}/bash-completion/completions/podman*
-%{_datadir}/zsh/site-functions/*podman*
-EOF
+#%files
+#%{_bindir}/podman*
+#%{_bindir}/podman-remote
+#%{_bindir}/quadlet
+#%{_bindir}/rootlessport
+#%{_libexecdir}/podman/*
+#%{_unitdir}/podman*
+#%{_userunitdir}/podman*
+#%{_tmpfilesdir}/podman*
+#/usr/lib/systemd/user-generators/podman*
+#%{_datadir}/fish/vendor_completions.d/podman*
+#%{_datadir}/bash-completion/completions/podman*
+#%{_datadir}/zsh/site-functions/*podman*
+#EOF
 
-cp -r "$univ"/* "$rpm/SOURCES/"
-rpmbuild -bb $rpm/rpm.spec --define "_topdir $rpm"
-mv -v "$rpm/RPMS/$ARCH/podman-anylinux-$VERSION-1.$ARCH.rpm" "$NAME_OF_FILE.rpm"
+#cp -r "$univ"/* "$rpm/SOURCES/"
+#rpmbuild -bb $rpm/rpm.spec --define "_topdir $rpm"
+#mv -v "$rpm/RPMS/$ARCH/podman-anylinux-$VERSION-1.$ARCH.rpm" "$NAME_OF_FILE.rpm"
