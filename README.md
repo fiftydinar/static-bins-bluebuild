@@ -1,6 +1,6 @@
 # Pseudo-static binaries for the BlueBuild project
 
-I made this, because we need utilities that would be portable and work everywhere accross any Linux distribution, like some `coreutils`, `sed`, `gawk`, `find`, `curl`, `wget`, `podman`, `docker` and `skopeo` tools.  
+I made this, because we need utilities that would be portable and work everywhere accross any Linux distribution, like some `coreutils`, `sed`, `gawk`, `find`, `curl`, `wget` and `skopeo` tools.  
 So everyone can benefit from this too.
 
 Building statically linked packages is not so easy, so I resorted to the unique method of building pseudo-static binaries, which are generally just a bit, but still acceptably larger compared to true static binaries.

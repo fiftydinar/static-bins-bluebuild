@@ -12,9 +12,7 @@ APPNAME="
 	curl
 	gawk
 	sed
-	podman
 	skopeo
-	docker
 "
 
 for appname in $APPNAME; do
