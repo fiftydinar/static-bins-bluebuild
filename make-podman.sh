@@ -93,7 +93,7 @@ BuildArch: $ARCH
 Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.
 
 %install
-cp --parents -r %{_sourcedir}/* /
+cp --parents -r %{_sourcedir}/* %buildroot
 
 %files
 %{_bindir}/podman*
