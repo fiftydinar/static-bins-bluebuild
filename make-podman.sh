@@ -27,7 +27,7 @@ tmpdir="/tmp/make-deb-rpm"
 univ="$tmpdir/univ"
 deb="$tmpdir/deb"
 rpm="$tmpdir/rpm"
-NAME_OF_FILE="$APPNAME-anylinux-$ARCH"
+NAME_OF_FILE="$APPNAME-$VERSION-anylinux-$ARCH"
 mkdir -p "$univ/usr/bin" \
          "$univ/usr/libexec/podman" \
          "$univ/usr/lib/systemd/system" \
