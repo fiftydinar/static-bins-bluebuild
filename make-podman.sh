@@ -20,10 +20,7 @@ quick-sharun /usr/bin/podman \
              /usr/bin/conmon \
              /usr/bin/runc \
              /usr/bin/newuidmap \
-             /usr/bin/newgidmap \
-
-## Don't unset Argv0, else pulling the image fails
-sed -i '/unset ARGV0/d' ./AppDir/AppRun
+             /usr/bin/newgidmap
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage
