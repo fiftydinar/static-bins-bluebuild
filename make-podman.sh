@@ -18,7 +18,9 @@ quick-sharun /usr/bin/podman \
              /usr/bin/podmansh \
              /usr/lib/podman \
              /usr/bin/conmon \
-             /usr/bin/runc
+             /usr/bin/runc \
+             /usr/bin/newuidmap \
+             /usr/bin/newgidmap \
 
 ## Don't unset Argv0, else pulling the image fails
 sed -i '/unset ARGV0/d' ./AppDir/AppRun
@@ -45,9 +47,10 @@ mkdir -p "$univ/usr/bin" \
          "$univ/usr/share/zsh/site-functions" \
          "$deb/DEBIAN" \
          "$rpm/SOURCES"
-         
+
 mv -v "./dist/$NAME_OF_FILE.AppImage" "$univ/usr/bin/podman"
 chmod +x "$univ/usr/bin/podman"
+setcap 'cap_setuid,cap_setgid+ep' "$univ/usr/bin/podman"
 ln -rsfv "$univ/usr/bin/podman" "$univ/usr/bin/podman-remote"
 ln -rsfv "$univ/usr/bin/podman" "$univ/usr/bin/podmansh"
 ln -rsfv "$univ/usr/bin/podman" "$univ/usr/libexec/podman/quadlet"
@@ -56,6 +59,8 @@ ln -rsfv "$univ/usr/bin/podman" "$univ/usr/bin/quadlet"
 ln -rsfv "$univ/usr/bin/podman" "$univ/usr/bin/rootlessport"
 ln -rsfv "$univ/usr/bin/podman" "$univ/usr/bin/conmon"
 ln -rsfv "$univ/usr/bin/podman" "$univ/usr/bin/runc"
+ln -rsfv "$univ/usr/bin/podman" "$univ/usr/bin/newuidmap"
+ln -rsfv "$univ/usr/bin/podman" "$univ/usr/bin/newgidmap" 
 cp -v /usr/lib/systemd/system/podman* "$univ/usr/lib/systemd/system/"
 cp -v /usr/lib/systemd/user/podman* "$univ/usr/lib/systemd/user/"
 cp -v /usr/lib/systemd/user-generators/podman* "$univ/usr/lib/systemd/user-generators/"
