@@ -14,7 +14,7 @@ export DESKTOP=DUMMY
 
 # Deploy dependencies
 mkdir -p /tmp/skopeo-tmp
-quick-sharun -- /usr/bin/skopeo copy docker://docker.io/library/nginx:latest dir:/tmp/skopeo-tmp
+quick-sharun -- "/usr/bin/skopeo copy docker://docker.io/library/nginx:latest dir:/tmp/skopeo-tmp"
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage
