@@ -14,4 +14,4 @@ Binaries are automatically built every day.
 
 ## Known issue
 
-- `skopeo` has a bug with copying containers to `containers-storage:` and `docker:` target.
+- `skopeo` has a bug with copying containers to `containers-storage:` and `docker:` target not working.
