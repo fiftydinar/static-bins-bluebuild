@@ -12,7 +12,6 @@ APPNAME="
 	curl
 	gawk
 	sed
-	skopeo
 "
 
 for appname in $APPNAME; do
